@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+
+        <div class="card w-88 col ">
+
+        <div class="card-header">
+            <h1> {{ my_booking.flight }}</h1>
+            <div class="col">
+        From:{{ my_booking.from_place }}
+            </div>
+            <div class="col">
+        To:{{ my_booking.to_place }} </div></div>
+        <div class="card-body" >
+		<h5 class="card-title">{{ my_booking.flight}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> No of seats booked:{{ my_booking.no_of_seats }}</h6>
+        <br>
+            <div class="row">
+        <p class="card-text col">
+        Depart time:  {{ my_booking.depart_at_from }}
+        </p>
+            <p class="card-text col">
+        Arrival time:  {{ my_booking.arrival_at_to }}
+        </p>
+                </div>
+
+        </div>
+        </div>
+    <form class="form-inline " action="/book/set_offer/{{ my_booking.id }}/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+    {% endblock %}

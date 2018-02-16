@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+
+
+        <div class="card">
+        <div class="card-header">
+            <div class="col-3">
+        From:{{ flight.from_place }}
+            </div>
+            <div class="col-3">
+        To:{{ flight.to_place }} </div></div>
+        <div class="card-body" >
+		<h5 class="card-title">{{ flight.flight}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> From:{{ flight.depart_at_from }} To:{{ flight.arrival_at_to }}</h6>
+        <br>
+        <p class="card-text">
+            Total members :{{ seats }}<br>
+            Rate :{{ offrate }}<br>
+            Total : {{ seats }} x {{ offrate }} = {{ total }}
+        </p>
+
+        </div>
+        </div>
+
+    <form class="form-inline card " action="/book/flight/{{ seats }}/{{ flight_id }}/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+        {% for x in list_form %}
+            <div class="form-inline">
+            {{ x.as_p }}
+            </div>
+        {% endfor %}
+    <input type="submit" class="btn-outline-primary btn" value="PAY" />
+</form>
+
+    {% endblock %}

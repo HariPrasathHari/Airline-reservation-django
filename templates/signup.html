@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     {% if user.is_authenticated %}
+         <meta http-equiv="refresh" content="0; url=http://127.0.0.1:8000/" />
+
+         {% else %}
+  <h2 align="center">Sign up</h2>
+         <div align="center">
+  <form class="form-control w-50"  method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p class="d-sm-table-row">
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}<br>
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit" class="btn btn-outline-primary">Sign up</button>
+  </form>
+         </div>
+    {% endif%}
+{% endblock %}

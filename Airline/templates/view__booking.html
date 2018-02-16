@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+
+{% for booking in my_booking %}
+{#        <div class="card w-88 col ">#}
+{##}
+{#        <div class="card-header">#}
+{#            <h1> {{ booking.Travelling.flight }}</h1>#}
+{#            <div class="col">#}
+{#        From:{{ booking.Travelling.from_place }}#}
+{#            </div>#}
+{#            <div class="col">#}
+{#        To:{{ booking.Travelling.to_place }} </div></div>#}
+{#        <div class="card-body" >#}
+{#		<h5 class="card-title">{{ flight.flight}} </h5>#}
+{#            <h6 class="card-subtitle mb-2 text-muted"> No of seats booked:{{ booking.no_of_seats }}#}
+{#                <br><strong>Cost : ${{ booking.cost }}</h6>#}
+{#        <br>#}
+{#            <div class="row">#}
+{#        <p class="card-text col">#}
+{#        Depart time:  {{ booking.Travelling.depart_at_from }}#}
+{#        </p>#}
+{#            <p class="card-text col">#}
+{#        Arrival time:  {{ booking.Travelling.arrival_at_to }}#}
+{#        </p>#}
+{#                </div>#}
+{##}
+{#        </div>#}
+{#        </div>#}
+    {% endfor %}
+{% for i,k in people.items %}
+    <div class="card w-88 col ">
+
+        <div class="card-header">
+            <h1> {{ i.Travelling.flight }}</h1>
+            <div class="col">
+        From:{{ i.Travelling.from_place }}
+            </div>
+            <div class="col">
+        To:{{ i.Travelling.to_place }} </div></div>
+        <div class="card-body" >
+		<h5 class="card-title">{{ flight.flight}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> No of seats booked:{{ i.no_of_seats }}
+                <br><strong>Cost : ${{ i.cost }}</h6>
+        <br>
+            <div class="row">
+        <p class="card-text col">
+        Depart time:  {{ i.Travelling.depart_at_from }}
+        </p>
+            <p class="card-text col">
+        Arrival time:  {{ i.Travelling.arrival_at_to }}
+        </p>
+                </div>
+
+        </div>
+        </div>
+{#        {% for z in i  %}#}
+{#    <div class="card">#}
+{#    <div class="card-header">#}
+{#           FLight: {{ i.Travelling.flight }}<br>#}
+{#    </div>#}
+    <div class="flex-lg-row">
+    {% if k %}
+    Travelling persons:<br>
+    {% for j in k %}
+        name: {{ j.name }}
+        age : {{ j.age }}
+        </div>
+
+
+        {% endfor %}
+{##}{% endif %}
+{#            {% endfor %}#}
+    {% endfor %}
+    {% endblock %}

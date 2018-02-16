@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <div class="col">
+    <div class="row">
+        {% if user.is_authenticated %}
+         <meta http-equiv="refresh" content="0; url=http://127.0.0.1:8000/home/" />
+        {% endif %}
+  <h2 class="card-header col">Airline reservation login</h2>
+    </div>
+  {% if form.errors %}
+    <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  <form class="form-control" method="post">
+    {% csrf_token %}
+    <input type="hidden"  name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p class="row">
+
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+  <div class="row">
+    <button type="submit" class="btn-outline-primary btn flex-lg-row col-3">Log in</button>
+      <div class="col-3">
+    <a class="btn btn-light  flex-lg-row card-link" href="{% url 'signup' %}">Sign up</a>
+
+  </div>
+  </div>
+
+  </form>
+    </div>
+    </div>
+   <div align="center"> OR
+     <div  align="center">
+         <img class="w-25 h-25" src="https://www.noviams.com/wp-content/uploads/2016/09/fb-google-login.png" >
+     </div>
+
+  </div>
+{% endblock %}

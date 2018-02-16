@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Success!!{% endblock %}
+
+{% block content %}
+
+
+        <div class="card">
+        <div class="card-header">
+            <div class="col-3">
+        From:{{ flight.from_place }}
+            </div>
+            <div class="col-3">
+        To:{{ flight.to_place }} </div></div>
+        <div class="card-body" >
+		<h5 class="card-title">{{ flight.flight}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> From:{{ flight.depart_at_from }} To:{{ flight.arrival_at_to }}</h6>
+        <br>
+        <p class="card-text">
+            Total members :{{ seats }}<br>
+            Rate :{{ offrate }}<br>
+            Total : {{ seats }} x {{ offrate }} = {{ total }}
+        </p>
+        </div>
+        </div>
+    <h4 class="alert alert-success">
+        Successfully booked !!  Check  your Mail
+    </h4>
+
+{% endblock %}

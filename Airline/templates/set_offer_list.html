@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for flight in object_list %}
+        <div class="card">
+        <div class="card-header">
+            <div class="col-3">
+        From:{{ flight.from_place }}
+            </div>
+            <div class="col-3">
+        To:{{ flight.to_place }} </div></div>
+        <div class="card-body" >
+		<h5 class="card-title">{{ flight.flight}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> From:{{ flight.depart_at_from }} To:{{ flight.arrival_at_to }}</h6>
+        <br>
+        <p class="card-text">
+            <button type="button" class="btn btn-light"> Available : {{ flight.available }}</button>  <button type="button" class="btn btn-danger">Rate:{{ flight.rate }}</button>  </p>
+        {% if flight.off > 0 %}
+            <strong>offer :<button type="button" class="btn btn-light disabled">{{ flight.off }}</button></strong>
+        {% endif %}
+
+            <a class="card-link" href="/book/set_offer/{{ flight.id }}/">set offer</a>
+
+        </div>
+        </div>
+    {% endfor %}
+    {% endblock %}
