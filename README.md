@@ -1,7 +1,7 @@
 # Airline-reservation-django
 
 
-### run this command 
+### Initial setup
 ```bash
 cd to/project/folder/
 sudo -s
@@ -10,20 +10,22 @@ python manage.py makemigations
 python manage.py migrate
 python manage.py runserver
 ```
-create superuser
 
+#### Create superuser
 ```bash
 python manage.py createsuperuser
 ```
-To open a shell to open a django shell
+
+#### To open a shell to open a django shell
 ```
 python manage.py shell
 ```
-And in shell
+
+#### Setting up test users 
+Run this in django shell
 ```
 execfile('setup.py')
 ```
-this is to setup test users
 
 - create admin 
 - add flights in admin page http://127.0.0.1:8000/admin/
